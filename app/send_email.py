@@ -20,26 +20,28 @@ newsapi = NewsApiClient(api_key=NEWS_API_KEY)
 #Get Top Headlines
 wsj_top_headlines = newsapi.get_top_headlines(sources='the-wall-street-journal')
 
-#Format News Articles
-wsjArticles = wsj_top_headlines['articles']
-wsjHeadlines = []
-wsjBody = []
-wsjURL = []
-i=0
-for y in wsjArticles:
-	article = wsjArticles[i]
-	headline = article['title']
-	body = article['description']
-	url = article['url']
-	wsjHeadlines.append(headline)
-	wsjBody.append(body)
-	wsjURL.append(url)
-	print("* " + headline)
-	print("      " + body)
-	print("      " + url)
-	print("")
-	i = i+1
-#print(wsjHeadlines)
+
+#Abstract Top Headlines
+def FormatTopHeadlines(top_headlines):
+	articles = top_headlines['articles']
+	headlines = []
+	bodies = []
+	urls = []
+	i = 0
+	for y in articles:
+		article = articles[i]
+		headline = article['title']
+		body = article['description']
+		url = article['url']
+		headlines.append(headline)
+		bodies.append(body)
+		urls.append(url)
+		i = i + 1
+	return(headlines,bodies,urls)
+
+s = FormatTopHeadlines(wsj_top_headlines)
+print(str(s))
+
 
 #Authenticate into Sendgrid
 sg = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY)
