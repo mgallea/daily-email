@@ -6,6 +6,7 @@ import sendgrid
 from sendgrid.helpers.mail import *
 from newsapi import NewsApiClient
 import json
+from functions import *
 
 #Load the .env file with appropriate variables
 load_dotenv()
@@ -19,28 +20,13 @@ newsapi = NewsApiClient(api_key=NEWS_API_KEY)
 
 #Get Top Headlines
 wsj_top_headlines = newsapi.get_top_headlines(sources='the-wall-street-journal')
+nyt_top_headlines = newsapi.get_top_headlines(sources='the-new-york-times')
 
-
-#Abstract Top Headlines
-def FormatTopHeadlines(top_headlines):
-	articles = top_headlines['articles']
-	headlines = []
-	bodies = []
-	urls = []
-	i = 0
-	for y in articles:
-		article = articles[i]
-		headline = article['title']
-		body = article['description']
-		url = article['url']
-		headlines.append(headline)
-		bodies.append(body)
-		urls.append(url)
-		i = i + 1
-	return(headlines,bodies,urls)
-
-s = FormatTopHeadlines(wsj_top_headlines)
-print(str(s))
+w = FormatTopHeadlines(wsj_top_headlines)
+n = FormatTopHeadlines(nyt_top_headlines)
+print(str(w))
+print("")
+print(str(n))
 
 
 #Authenticate into Sendgrid
