@@ -22,11 +22,12 @@ newsapi = NewsApiClient(api_key=NEWS_API_KEY)
 wsj_top_headlines = newsapi.get_top_headlines(sources='the-wall-street-journal')
 nyt_top_headlines = newsapi.get_top_headlines(sources='the-new-york-times')
 
-w = FormatTopHeadlines(wsj_top_headlines)
-n = FormatTopHeadlines(nyt_top_headlines)
-print(str(w))
-print("")
-print(str(n))
+wTitle = FormatTopHeadlines(wsj_top_headlines,"title")
+wBody = FormatTopHeadlines(wsj_top_headlines,"body")
+wURL = FormatTopHeadlines(wsj_top_headlines, "url")
+nTitle = FormatTopHeadlines(nyt_top_headlines,"title")
+nBody = FormatTopHeadlines(nyt_top_headlines, "body")
+nURL = FormatTopHeadlines(nyt_top_headlines, "url")
 
 
 #Authenticate into Sendgrid
