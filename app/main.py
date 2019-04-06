@@ -30,8 +30,6 @@ nTitle = FormatTopHeadlines(nyt_top_headlines,"title")
 nBody = FormatTopHeadlines(nyt_top_headlines, "description")
 nURL = FormatTopHeadlines(nyt_top_headlines, "url")
 
-
-
 #Prepare the email
 message = Mail(
     from_email = MY_EMAIL_ADDRESS,
@@ -39,22 +37,38 @@ message = Mail(
     to_emails = MY_EMAIL_ADDRESS
     )
 message.dynamic_template_data ={
-    'source1':'Test Publication',
-  	'l-1':'http://google.com',
- 	'h1-1':'Test Headline 1.1',
- 	'b1-1':'Test Body 1.1',
-  	'l-2':'http://google.com',
-  	'h1-2':'Test Headline 1.2',
-  	'b1-2':'Test Body 1.2',
-  	'l-3':'http://google.com',
-  	'h1-3':'Test Headline 1.3',
- 	'b1-3':'Test Body 1.3',
-  	'l-4':'http://google.com',
-  	'h1-4':'Test Headline 1.4',
-  	'b1-4':'Test Body 1.4',
-  	'l-5':'http://google.com',
- 	'h1-5':'Test Headline 1.5',
-  	'b1-5':'Test Body 1.5'
+    'source1':"The Wall Street Journal",
+  	'l1-1': wURL[0],
+ 	'h1-1': wTitle[0],
+ 	'b1-1': wBody[0],
+  	'l1-2': wURL[1],
+  	'h1-2': wTitle[1],
+  	'b1-2': wBody[1],
+  	'l1-3': wURL[2],
+  	'h1-3': wTitle[2],
+ 	'b1-3': wBody[2],
+  	'l1-4': wURL[3],
+  	'h1-4': wTitle[3],
+  	'b1-4': wBody[3],
+  	'l1-5': wURL[4],
+ 	'h1-5': wTitle[4],
+  	'b1-5': wBody[4],
+  	'source2':"The New York Times",
+  	'l2-1': nURL[0],
+ 	'h2-1': nTitle[0],
+ 	'b2-1': nBody[0],
+  	'l2-2': nURL[1],
+  	'h2-2': nTitle[1],
+  	'b2-2': nBody[1],
+  	'l2-3': nURL[2],
+  	'h2-3': nTitle[2],
+ 	'b2-3': nBody[2],
+  	'l2-4': nURL[3],
+  	'h2-4': nTitle[3],
+  	'b2-4': nBody[3],
+  	'l2-5': nURL[4],
+ 	'h2-5': nTitle[4],
+  	'b2-5': nBody[4],
     }
 message.template_id = SENDGRID_TEMPLATE_ID
 
