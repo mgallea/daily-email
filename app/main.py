@@ -37,7 +37,7 @@ message = Mail(
     to_emails = MY_EMAIL_ADDRESS
     )
 message.dynamic_template_data ={
-    'source1':"The Wall Street Journal",
+    'source1':"THE WALL STREET JOURNAL",
   	'l1-1': wURL[0],
  	'h1-1': wTitle[0],
  	'b1-1': wBody[0],
@@ -53,7 +53,7 @@ message.dynamic_template_data ={
   	'l1-5': wURL[4],
  	'h1-5': wTitle[4],
   	'b1-5': wBody[4],
-  	'source2':"The New York Times",
+  	'source2':"THE NEW YORK TIMES",
   	'l2-1': nURL[0],
  	'h2-1': nTitle[0],
  	'b2-1': nBody[0],
@@ -75,9 +75,9 @@ message.template_id = SENDGRID_TEMPLATE_ID
 #Send the email
 sendgrid_client = sendgrid.SendGridAPIClient(SENDGRID_API_KEY)
 response = sendgrid_client.send(message)
-print(response)
 
 
+#print(response)
 #from_email = Email(MY_EMAIL_ADDRESS)
 #to_email = Email(MY_EMAIL_ADDRESS)
 #subject = "Example Notification"
