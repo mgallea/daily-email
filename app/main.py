@@ -7,6 +7,7 @@ from sendgrid.helpers.mail import *
 from newsapi import NewsApiClient
 import json
 from functions import *
+import datetime
 
 #Load the .env file with appropriate variables
 load_dotenv()
@@ -19,9 +20,17 @@ SENDGRID_TEMPLATE_ID = os.environ.get("SENDGRID_TEMPLATE_ID", "OOPS, please set 
 #Authenticate into News API
 newsapi = NewsApiClient(api_key=NEWS_API_KEY)
 
+#Get the current date
+now = datetime.datetime.now()
+day = now.day
+month = now.month
+year = now.year
+date = str(year) + "-" + str(month) + "-" + str(day)
+
 #Get Top Headlines
 wsj_top_headlines = newsapi.get_top_headlines(sources='the-wall-street-journal')
 nyt_top_headlines = newsapi.get_top_headlines(sources='the-new-york-times')
+donald_top_headlines = newsapi.get_top_headlines(q='Donald Trump')
 
 wTitle = FormatTopHeadlines(wsj_top_headlines,"title")
 wBody = FormatTopHeadlines(wsj_top_headlines,"description")
@@ -29,6 +38,14 @@ wURL = FormatTopHeadlines(wsj_top_headlines, "url")
 nTitle = FormatTopHeadlines(nyt_top_headlines,"title")
 nBody = FormatTopHeadlines(nyt_top_headlines, "description")
 nURL = FormatTopHeadlines(nyt_top_headlines, "url")
+dTitle = FormatTopHeadlines(donald_top_headlines,"title")
+dBody = FormatTopHeadlines(donald_top_headlines, "description")
+dURL = FormatTopHeadlines(donald_top_headlines, "url")
+
+
+
+#Get articles about Apple
+
 
 #Prepare the email
 message = Mail(
@@ -69,6 +86,22 @@ message.dynamic_template_data ={
   	'l2-5': nURL[4],
  	'h2-5': nTitle[4],
   	'b2-5': nBody[4],
+  	'source3':'WHAT DID TRUMP DO THIS TIME?',
+  	'l3-1': dURL[0],
+ 	'h3-1': dTitle[0],
+ 	'b3-1': dBody[0],
+  	'l3-2': dURL[1],
+  	'h3-2': dTitle[1],
+  	'b3-2': dBody[1],
+  	'l3-3': dURL[2],
+  	'h3-3': dTitle[2],
+ 	'b3-3': dBody[2],
+  	'l3-4': dURL[3],
+  	'h3-4': dTitle[3],
+  	'b3-4': dBody[3],
+  	'l3-5': dURL[4],
+ 	'h3-5': dTitle[4],
+  	'b3-5': dBody[4],
     }
 message.template_id = SENDGRID_TEMPLATE_ID
 
