@@ -1,4 +1,3 @@
 python-dotenv
 sendgrid
-sendgrid.helpers.mail
 newsapi
