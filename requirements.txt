@@ -1,0 +1,8 @@
+python-dotenv
+os
+requests
+sendgrid
+sendgrid.helpers.mail
+newsapi
+json
+datetime
