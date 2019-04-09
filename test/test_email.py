@@ -1,2 +1,5 @@
-def test_test():
-	assert 1 == 1
+from app.functions import *
+
+def test_Kelvin():
+	k = KelvinToFahrenheit(298)
+	assert k == 77
