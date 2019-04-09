@@ -43,4 +43,27 @@ def TemperatureParser(full_weather_object):
 
 	return dailyTemperature
 
+def RainParser(full_weather_object):
+	fullWeather = full_weather_object.json()
+	parsedWeather = fullWeather['list']
+	dailyForcast = parsedWeather[0:11]
+
+	rainToday = []
+	y = 0
+
+	for x in dailyForcast:
+		if dailyForcast[y]['weather'][0]['main'] == "Rain":
+			rainToday.append(dailyForcast[y]['weather'][0]['main'])
+		y = y + 1
+	if rainToday == []:
+		rainToday = ['No Rain']
+	else:
+		rainToday = set(rainToday)
+	return rainToday
+
+
+
+
+
+
 

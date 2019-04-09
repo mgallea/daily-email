@@ -21,13 +21,6 @@ OPENWEATHER_API_KEY = os.environ.get("OPENWEATHER_API_KEY", "OOPS, please set en
 #Authenticate into News API
 newsapi = NewsApiClient(api_key=NEWS_API_KEY)
 
-#Get the current date
-now = datetime.datetime.now()
-day = now.day
-month = now.month
-year = now.year
-date = str(year) + "-" + str(month) + "-" + str(day)
-
 #Get Top Headlines
 wsj_top_headlines = newsapi.get_top_headlines(sources='the-wall-street-journal')
 nyt_top_headlines = newsapi.get_top_headlines(sources='the-new-york-times')
@@ -52,6 +45,12 @@ temp = TemperatureParser(fullWeather)
 dailyHigh = str(temp[0])
 dailyLow = str(temp[1])
 
+rainToday = RainParser(fullWeather)
+if rainToday == {'Rain'}:
+  rainBool = True
+else:
+  rainBool = False
+
 #Prepare the email
 message = Mail(
     from_email = MY_EMAIL_ADDRESS,
@@ -59,6 +58,7 @@ message = Mail(
     to_emails = MY_EMAIL_ADDRESS
     )
 message.dynamic_template_data ={
+    'rain' : rainBool,
     'daily-high' : dailyHigh,
     'daily-low' : dailyLow,
     'source1':"THE WALL STREET JOURNAL",
