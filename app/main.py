@@ -16,7 +16,7 @@ SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY", "OOPS, please set env var 
 MY_EMAIL_ADDRESS = os.environ.get("MY_EMAIL_ADDRESS", "OOPS, please set env var called 'MY_EMAIL_ADDRESS'")
 NEWS_API_KEY = os.environ.get("NEWS_API_KEY", "OOPS, please set env var called 'MY_EMAIL_ADDRESS'")
 SENDGRID_TEMPLATE_ID = os.environ.get("SENDGRID_TEMPLATE_ID", "OOPS, please set env var called 'SENDGRID_TEMPLATE_ID'" )
-OPENWEATHER_API_KEY = os.env.get("OPENWEATHER_API_KEY", "OOPS, please set env var valled 'OPENWEATHER_API_KEY'")
+OPENWEATHER_API_KEY = os.environ.get("OPENWEATHER_API_KEY", "OOPS, please set env var valled 'OPENWEATHER_API_KEY'")
 
 #Authenticate into News API
 newsapi = NewsApiClient(api_key=NEWS_API_KEY)
@@ -45,6 +45,13 @@ dURL = FormatTopHeadlines(donald_top_headlines, "url")
 
 
 #Get Weather Data
+fullWeather = requests.get('https://api.openweathermap.org/data/2.5/forecast?zip=20057&APPID='+OPENWEATHER_API_KEY)
+
+#Parse Weather Data
+temp = TemperatureParser(fullWeather)
+print(str(temp))
+
+exit()
 
 #Prepare the email
 message = Mail(
