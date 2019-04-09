@@ -115,15 +115,3 @@ message.template_id = SENDGRID_TEMPLATE_ID
 #Send the email
 sendgrid_client = sendgrid.SendGridAPIClient(SENDGRID_API_KEY)
 response = sendgrid_client.send(message)
-
-
-#print(response)
-#from_email = Email(MY_EMAIL_ADDRESS)
-#to_email = Email(MY_EMAIL_ADDRESS)
-#subject = "Example Notification"
-#message_text = 
-#content = Content("text/plain", message_text)
-#mail = Mail(from_email, subject, to_email, content)
-
-#Send the email
-#response = sg.client.mail.send.post(request_body=mail.get())
