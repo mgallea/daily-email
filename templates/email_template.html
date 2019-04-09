@@ -4,6 +4,10 @@
 </head>
 <body style="font-family:Open-Sans">
 <div style="width:80%;margin-left:10%">
+  <p style="font-family:Garamond,serif"> Welcome to your daily briefing. Here's what you need to know for the day. The temperature today will range from {{ daily-high }}&#8457; to {{ daily-low }}&#8457; </p>
+  {{#if rain}}
+    <p style="font-family:Garamond,serif"> You might want to bring an umbrella today. </p>
+  {{/if}}
   <h1 style="color:13305e; font-family:Open-Sans,Sans-Serif">{{ source1 }}</h1>
   <hr>
     <a style="color:13305e; font-family:Open-Sans,Sans-Serif" href="{{ l1-1 }}">
