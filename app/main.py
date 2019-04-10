@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 import sendgrid
 from sendgrid.helpers.mail import *
-from newsapi import NewsApiClient
+from newsapi.newsapi_client import NewsApiClient
 import json
 from functions import *
 import datetime
