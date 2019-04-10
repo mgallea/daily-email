@@ -2,7 +2,7 @@ python-dotenv
 requests
 certifi>=2017.4.17
 chardet<3.1.0,>=3.0.2
-urllib3<1.22,>=1.21.1
+urllib3
 idna<2.6,>=2.5
 sendgrid
 newsapi
