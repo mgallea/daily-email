@@ -1,9 +1,5 @@
 python-dotenv
 requests
-certifi
-chardet
-urllib3
-idna
 sendgrid
-newsapi
+newsapi-python
 pytest
