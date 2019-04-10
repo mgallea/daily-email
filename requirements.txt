@@ -1,9 +1,9 @@
 python-dotenv
 requests
-certifi>=2017.4.17
-chardet<3.1.0,>=3.0.2
+certifi
+chardet
 urllib3
-idna<2.6,>=2.5
+idna
 sendgrid
 newsapi
 pytest
