@@ -14,7 +14,7 @@ load_dotenv()
 
 SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY", "OOPS, please set env var called 'SENDGRID_API_KEY'")
 MY_EMAIL_ADDRESS = os.environ.get("MY_EMAIL_ADDRESS", "OOPS, please set env var called 'MY_EMAIL_ADDRESS'")
-NEWS_API_KEY = os.environ.get("NEWS_API_KEY", "OOPS, please set env var called 'MY_EMAIL_ADDRESS'")
+NEWS_API_KEY = os.environ.get("NEWS_API_KEY", "OOPS, please set env var called 'NEWS_API_KEY'")
 SENDGRID_TEMPLATE_ID = os.environ.get("SENDGRID_TEMPLATE_ID", "OOPS, please set env var called 'SENDGRID_TEMPLATE_ID'" )
 OPENWEATHER_API_KEY = os.environ.get("OPENWEATHER_API_KEY", "OOPS, please set env var valled 'OPENWEATHER_API_KEY'")
 
