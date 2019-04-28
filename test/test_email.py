@@ -55,4 +55,15 @@ def rain_parser_test():
 	rain = True
 	assert RainParser(full_weather) == True
 
-
+@pytest.mark.skipif(CI_ENV==True, reason=SKIP_REASON)
+def test_Sendgrid():
+	assert SENDGRID_API_KEY != "OOPS, please set env var called 'SENDGRID_API_KEY'"
+	assert SENDGRID_TEMPLATE_ID != "OOPS, please set env var called 'SENDGRID_TEMPLATE_ID'"
+	message = Mail(
+    from_email='from_email@example.com',
+    to_emails='to@example.com',
+    subject='Sending with Twilio SendGrid is Fun',
+    html_content='<strong>and easy to do anywhere, even with Python</strong>')
+	sendgrid_client = sendgrid.SendGridAPIClient(SENDGRID_API_KEY)
+	response = sendgrid_client.send(message)
+	assert response.status_code == 202
