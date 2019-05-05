@@ -9,7 +9,11 @@ Issues requests to [Open Weather API](https://openweathermap.org/api) and [NewsA
   + Pip
 
 ## Installation
-Fork this repository under your own control and then clone the resulting repo onto your computer. Use Anaconda to create a new virtual environment and install the package dependencies listed in Requirements.txt
+Fork this repository under your own control and then clone the resulting repo onto your computer. Use Anaconda to create a new virtual environment and install the package dependencies listed in Requirements.txt:
+
+```sh
+pip install -r requirements.txt
+```
 
 ## .env Setup
 To ensure that this application will work as desired, you need to create a .env file. This file will need to include the following content:
